@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HCI + visualization weekly digest: Nov 16–23, 2026</title>
+  <meta name="description" content="Weekly digest for Nov 16–23, 2026. BI vendors moved from AI that builds charts to AI that has to show its work, as Tableau Studio went GA and vendors shipped ways to trace answers back to governed definitions.">
+  <link rel="canonical" href="https://ericalvarado.github.io/dataviz-ai-trends/digests/2026-11-23.html">
+  <meta name="theme-color" content="#070d18">
+  <meta name="color-scheme" content="dark">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Data Visualization Tech Trends 2026">
+  <meta property="og:title" content="HCI + visualization weekly digest: Nov 16–23, 2026">
+  <meta property="og:description" content="BI vendors moved from AI that builds charts to AI that has to show its work. Tableau Studio went GA, Microsoft put agent-built apps into Power BI Desktop, and ThoughtSpot, Sigma, and Hex shipped features for tracing answers back to governed definitions.">
+  <meta property="og:url" content="https://ericalvarado.github.io/dataviz-ai-trends/digests/2026-11-23.html">
+  <meta property="og:image" content="https://ericalvarado.github.io/dataviz-ai-trends/images/dataviz-ai-trends-2026-race.png">
+  <meta property="og:image:secure_url" content="https://ericalvarado.github.io/dataviz-ai-trends/images/dataviz-ai-trends-2026-race.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="2160">
+  <meta property="og:image:height" content="5277">
+  <meta property="og:image:alt" content="Infographic, Data Visualization Tech Trends 2026: What AI Is Changing, with a horse-racing chart titled The Race for AI in BI.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HCI + visualization weekly digest: Nov 16–23, 2026">
+  <meta name="twitter:description" content="BI vendors moved from AI that builds charts to AI that has to show its work. Tableau Studio went GA, Microsoft put agent-built apps into Power BI Desktop, and ThoughtSpot, Sigma, and Hex shipped features for tracing answers back to governed definitions.">
+  <meta name="twitter:image" content="https://ericalvarado.github.io/dataviz-ai-trends/images/dataviz-ai-trends-2026-race.png">
+  <meta name="twitter:image:alt" content="Infographic, Data Visualization Tech Trends 2026: What AI Is Changing, with a horse-racing chart titled The Race for AI in BI.">
+
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <p class="kicker">Weekly digest · Nov 23, 2026</p>
+      <nav class="actions" aria-label="Related">
+        <a href="../index.html">Trend report</a>
+        <a href="index.html">Weekly digests</a>
+      </nav>
+    </header>
+
+    <main>
+<article class="digest">
+<h1>HCI + visualization weekly digest: Nov 16–23, 2026</h1>
+<p><strong>Headline:</strong> BI vendors moved from AI that <em>builds</em> charts to AI that has to <em>show its work</em>. Tableau Studio went GA, Microsoft put agent-built apps into Power BI Desktop, and ThoughtSpot, Sigma, and Hex all shipped features for tracing answers back to governed definitions. The research side was quieter; the standout was a perception study on how attention cues flip ensemble bias in charts.</p>
+<p><em>Window: Mon Nov 16 – Mon Nov 23, 2026 (ET). Every link below was fetched and checked against the claim. I've labeled what's an empirical finding, what's a vendor claim, and what's my own read.</em></p>
+<h2>Research: perception, reading, and interaction</h2>
+<p><strong>1. Attention cues decide whether a chart's "whole" pulls individual values toward it or pushes them away.</strong> Corbett and Anthony ran two experiments on size judgments of a single circle inside an ensemble (<a href="https://arxiv.org/abs/2611.22885">arXiv, Nov 17</a>). <strong>Empirical finding:</strong> when observers knew the target beforehand (or right after), bias was mostly repulsive (pushed away from the ensemble mean) or near zero. When nothing specified the target, bias reversed to attraction toward the ensemble. Precision dropped from pre-cue to post-cue to no-cue. Study 2 repeated the pattern on chart-like displays of startup valuations and precinct vote contributions.</p>
+<p><em>Why it matters:</em> how a design directs attention, and not only the encoding, sets the direction of misreading. <em>For Eric's study (my read, not tested by the authors):</em> this gives a perceptual mechanism for comparing treatments. Storytelling headlines and comic panel sequencing tell readers what to look at before they look, while a sparse Tuftean display often doesn't. That makes "attentional certainty" a candidate variable or covariate.</p>
+<p><strong>2. FigFlux: AI-assisted animated transitions between figure panels.</strong> Ying, Liu, Yang, Yin, Wen, and Wang present Figure Space and Transition Space, built from an analysis of 48 published multi-panel figures, plus FigFlux, a human-in-the-loop system that guides AI agents to animate between panels (<a href="https://arxiv.org/abs/2611.26036">arXiv, Nov 19</a>). <strong>Empirical finding (N=16 scientific authors plus expert assessment):</strong> authors reported lower workload than with their usual tools. Experts rated FigFlux transitions above those made with participants' usual tools and above AI-only transitions.</p>
+<p><em>Why it matters:</em> this formalizes what should happen <em>between</em> panels, which is the gutter problem in data comics. It's a useful vocabulary for describing how the comics treatment links panels, compared with a static small-multiples treatment.</p>
+<p><strong>3. Visualization grammars: semantic validity vs. graphical freedom.</strong> Huang and Kay argue that systems inspired by the Grammar of Graphics trade expressivity for validity. They propose three contribution types: Semantic Validity Theories, Semantic Visualization Systems, and Graphical Arrangement Systems (<a href="https://arxiv.org/abs/2611.21073">arXiv, Nov 16</a>). <strong>Conceptual/position paper; no user study.</strong></p>
+<p><em>Why it matters:</em> it sharpens how to describe what ggplot2, Vega-Lite, and similar tools do and don't guarantee about correctness. That's directly usable in BUA3310 and CUS625, and in method write-ups that justify how stimuli were built.</p>
+<p><strong>4. Grounding natural-language questions in dashboard pixels.</strong> Zhang, Tang, Cai, Bu, Li, Lin, Deng, and Cai define Visual Grounding on Dashboards: given a dashboard screenshot and a query, localize the relevant element. They release VGD-Bench and a two-stage model, VGD-Net, which first retrieves the chart and then grounds within it (<a href="https://arxiv.org/abs/2611.27355">arXiv, Nov 20</a>). <strong>Benchmark result:</strong> mean IoU 57.06 and success rate 66.82, above the multimodal baselines they tested.</p>
+<p><em>Why it matters:</em> conversational BI can only be trusted if the system can point to the mark behind an answer. A roughly two-in-three success rate shows how far that still is from reliable.</p>
+<p><strong>5. Pre-generation "belief controls" to fight anchoring in creative AI.</strong> Wang and Pushkarna's Proactive Co-Creator (PaCC) shows its assumptions and uncertainty (clarifications, belief graphs, media attributes) <em>before</em> generating anything, so the human sets the first anchor (<a href="https://arxiv.org/abs/2611.21405">arXiv, Nov 16</a>). <strong>Evidence is exploratory:</strong> a small single-arm study found directionally positive sense of agency compared with familiar prompt tools, and mixed feelings about ownership.</p>
+<p><em>Why it matters:</em> this pattern carries over to AI chart and diagram generators. Surfacing the AI's reading of the data and intent before rendering could reduce the "polished artifact" trust effect seen in earlier AI-charting studies.</p>
+<p><strong>6. Reading figures by touch on a low-cost vibrotactile surface.</strong> Gunda, Raman, and PD had 9 participants (4 blind, 5 sighted) identify 7 figures by touch (<a href="https://arxiv.org/abs/2611.22614">arXiv, Nov 17</a>). <strong>Empirical finding:</strong> accuracy was comparable across groups, but blind participants were about three times faster, using a continuous "gliding" strategy. Errors clustered on specific figures (a diagonal was misread even with vision), which points to representation rather than resolution as the bottleneck.</p>
+<p><em>Why it matters:</em> this is small-N, but it's evidence for accessible-graphics design, an accessibility thread relevant to CUS625.</p>
+<p><em>Also on arXiv this week, briefly:</em> a channel-centric synthesis on how differential-privacy noise interacts with visual channels (<a href="https://arxiv.org/abs/2611.26396">Yang, Pacca, Yang, Fan, Nov 19</a>). VideoTrail, a hierarchical-visualization browser extension for finding moments in videos, with an N=16 user study (<a href="https://arxiv.org/abs/2611.25377">Yeh, Wang, Viégas, Wattenberg, Nov 19</a>). Sketch2TikZ, reinforcement learning that converts hand-drawn sketches into executable TikZ diagrams, benchmarked on SkeTikZ and FlowChart-3B (<a href="https://arxiv.org/abs/2611.27620">Paliwal, Jain, Sharma, Patwardhan, Nov 20</a>).</p>
+<p><em>Quiet zones:</em> I found <strong>no new data comics, sketchnoting, or visualization literacy papers dated in the window</strong>. Candidates that turned up (e.g., the CoViLT literacy test, Nov 7; Dashboard Remixing, Nov 8) fell outside it and were left out.</p>
+<h2>AI in interfaces and analytics</h2>
+<p><strong>7. Microsoft Ignite: Power BI gets agent-built apps and an open semantic layer.</strong> According to the <a href="https://news.microsoft.com/events/ignite/2026/book-of-news/">Ignite 2026 Book of News</a>, Power BI Desktop can now build data apps from a semantic model plus a natural-language description (preview, extending to Pro customers), and those apps can write data back. Rayfin and Fabric apps are GA. Fabric IQ connectors for ChatGPT and Claude, also in preview, bring Power BI semantic-model measures into both assistants. Microsoft's Power BI Ignite post (<a href="https://www.decisive.systems/Home/TabId/1370/ArtMID/3471/ArticleID/49307/Power-BI-at-Ignite-Building-on-the-momentum.aspx">republished here, Nov 17</a>) adds that <em>semantic views</em> entered public preview as a DAX-capable semantic layer on the Apache Ossie (incubating) standard, which Microsoft is advancing with Snowflake. <strong>These are vendor claims.</strong></p>
+<p><em>Why it matters:</em> Microsoft is betting that the governed metric layer, not the chart, is the asset AI gets anchored to, including inside competitors' chat assistants.</p>
+<p><strong>8. Tableau Studio GA: Tableau Desktop rebuilt around an agent.</strong> Salesforce said Tableau Studio launched on Tableau Cloud on Nov 17 and Tableau Server on Nov 19, together with Tableau Skills and Tableau Data Apps (<a href="https://www.salesforce.com/kr/blog/tableau-studio-launch/">Salesforce Korea, Nov 16, in Korean</a>). The <a href="https://help.tableau.com/current/api/studio-dev-guide/en-us/release-notes.html">Tableau Studio release notes (2026.3.1)</a> describe it as "the evolution of Tableau Desktop," with a "Claude-optimized" Tableau Agent and all classic authoring kept. <strong>These are vendor claims.</strong></p>
+<p><em>Why it matters:</em> the main authoring tool in Eric's teaching is now chat-first with drag-and-drop as a fallback. That changes what "building a viz" means for students.</p>
+<p><strong>9. "Show your work" became the shared vendor feature.</strong> Three releases this week aimed at verifiability:</p>
+<ul>
+  <li>ThoughtSpot connected Spotter to Claude Data via MCP. Each answer comes back with the search tokens (measures, filters, time ranges) that produced it, and Claude-built dashboards can be promoted to governed Liveboards (<a href="https://www.thoughtspot.com/press-releases/thoughtspot-deepens-integration-with-claude-to-advance-agentic-analytics-for-the-enterprise">ThoughtSpot, Nov 18</a>).</li>
+  <li>Sigma made every number in Sigma Assistant answers traceable to its calculation and lineage, GA for all customers (<a href="https://www.sigmacomputing.com/blog/sigma-assistant-traceable-answers">Sigma, Nov 22</a>).</li>
+  <li>Hex's Knowledge Engine labels learned facts from "Verified" to "Debunked" and flags "contested knowledge" (<a href="https://hex.tech/blog/knowledge-engine/">Hex, Nov 19</a>). Hex reports 22% faster responses and 25% lower cost in its own workspace, a <strong>vendor-internal figure that hasn't been independently tested</strong>.</li>
+</ul>
+<p><em>Why it matters:</em> the industry is converging on provenance and traceability as its answer to AI-chart trust. None of these vendors has published evidence that end users actually inspect the trace, and earlier HCI work suggests they often don't.</p>
+<p><strong>10. Looker modernizes its native charts and hands custom visuals to coding agents.</strong> Google added KPI, bullet and gauge, Sankey, hierarchical-table, histogram, and network charts, plus a modernized dashboard style. It also launched an open-source "custom visualization skill" that lets coding agents write charts against Looker's Visualization API, in D3, Vega-Lite, ECharts, and other libraries (<a href="https://cloud.google.com/blog/products/business-intelligence/modern-data-visualizations-and-custom-charts-in-looker">Google Cloud Blog, Nov 17</a>). The post frames this as "enterprise data storytelling."</p>
+<p><em>Why it matters:</em> agent-written bespoke charts inside governed BI will multiply non-standard encodings, which raises the stakes for visualization literacy and design review.</p>
+<h2>Vendor horse race (LENS's judgment, not a measured ranking)</h2>
+<ul>
+  <li><strong>1. Tableau: holds.</strong> Studio GA on Cloud and Server is the biggest single product shift of the week.</li>
+  <li><strong>2. ThoughtSpot: holds.</strong> The Claude Data integration bets on being the trusted semantic back end for other vendors' assistants.</li>
+  <li><strong>3. Databricks edges ahead of Qlik.</strong> Databricks made bulk migration of Tableau and Power BI reports into AI/BI Dashboards via Genie Code GA (<a href="https://www.databricks.com/blog/bulk-migrate-your-dashboards-aibi-genie-code">Databricks, Nov 19</a>), a direct move to pull in incumbents' content. Qlik added custom skills plus excluded-set ("gray"), predictive, optimization, and causal analysis to Qlik Answers (<a href="https://www.qlik.com/us/news/company/press-room/press-releases/qlik-answers-puts-business-expertise-to-work-in-ai-assisted-decisions">Qlik, Nov 17</a>). Qlik's update is solid, but it's incremental.</li>
+  <li><strong>Microsoft Power BI/Fabric: biggest shipping week.</strong> It's an Ignite week (item 7). The open semantic-layer play with Snowflake is the strategic move to watch.</li>
+  <li><strong>Rising: Sigma.</strong> It shipped traceable answers (GA) and announced its Context Engine on Nov 16, with a private beta planned for next month (<a href="https://www.sigmacomputing.com/blog/sigma-context-engine">Sigma, Nov 16</a>).</li>
+  <li><strong>Snowflake:</strong> I found no verified Snowflake BI launch dated inside the window. Its visible move this week is as Microsoft's named Apache Ossie partner.</li>
+  <li><strong>Also moving:</strong> Hex 4.0 / Knowledge Engine (item 9). Deepnote rebuilt its data apps so teams can build in Claude or Codex and then host them with live data and shared metric definitions (<a href="https://deepnote.com/blog/apps">Deepnote, Nov 19</a>). Looker (item 10). Claude Data (launched Nov 10) is now a target that rivals integrate <em>into</em> (ThoughtSpot, Microsoft Fabric IQ connectors).</li>
+</ul>
+<p><strong>Open-source tooling:</strong> quiet. The only in-window release among D3, Vega/Vega-Lite, Observable Plot, Plotly, ggplot2, Altair, and ECharts was <a href="https://github.com/tidyverse/ggplot2/releases/tag/v4.0.4">ggplot2 4.0.4 (Nov 16)</a>, an S7-compatibility hotfix that isn't notable for users.</p>
+<h2>Worth watching</h2>
+<p>Power BI apps reaching <strong>Pro</strong> licenses "in the coming weeks." That would put agent-built, write-back data apps in front of the largest BI user base, and it's a natural classroom case for BUA610.</p>
+<h2>References</h2>
+<ol>
+  <li>Jennifer E. Corbett, Brian W. Anthony. "The Whole Warps the Parts: Attentional Certainty Modulates Ensemble-Induced Bias in Visualizations." arXiv:2611.22885, Nov 17, 2026. <a href="https://arxiv.org/abs/2611.22885">https://arxiv.org/abs/2611.22885</a></li>
+  <li>Lu Ying, Can Liu, Yuxiao Yang, Jianing Yin, Xiaolin Wen, Yong Wang. "Presenting Your Figures: Data-informed Animated Transitions Across Scientific Figure Panels." arXiv:2611.26036, Nov 19, 2026. <a href="https://arxiv.org/abs/2611.26036">https://arxiv.org/abs/2611.26036</a></li>
+  <li>Cynthia A. Huang, Matthew Kay. "Semantic Validity vs. Graphical Arrangement in Visualization Grammars." arXiv:2611.21073, Nov 16, 2026. <a href="https://arxiv.org/abs/2611.21073">https://arxiv.org/abs/2611.21073</a></li>
+  <li>Yuefei Zhang, Songyin Tang, Yile Cai, Yuqi Bu, Liuwu Li, Yanna Lin, Zikun Deng, Yi Cai. "Show Me the Answer: Visual Grounding on Dashboards." arXiv:2611.27355, Nov 20, 2026. <a href="https://arxiv.org/abs/2611.27355">https://arxiv.org/abs/2611.27355</a></li>
+  <li>Zi Wang, Mahima Pushkarna. "Shaping AI's Beliefs Before It Generates: Human Sense of Agency in Creative AI." arXiv:2611.21405, Nov 16, 2026. <a href="https://arxiv.org/abs/2611.21405">https://arxiv.org/abs/2611.21405</a></li>
+  <li>Uday Nath Gunda, Arun Raman, Parthasarathy PD. "An Affordable Vibrotactile Surface for Tactile Figure Recognition: Exploration Strategies of Blind and Sighted Users." arXiv:2611.22614, Nov 17, 2026. <a href="https://arxiv.org/abs/2611.22614">https://arxiv.org/abs/2611.22614</a></li>
+  <li>Jing Yang, Sarayu Pacca, Zhaocong Yang, Liyue Fan. "Rethinking Utility in Differentially Private Visualization: A Channel-Centric Perspective." arXiv:2611.26396, Nov 19, 2026. <a href="https://arxiv.org/abs/2611.26396">https://arxiv.org/abs/2611.26396</a></li>
+  <li>Catherine Yeh, Bryan Wang, Fernanda Viégas, Martin Wattenberg. "VideoTrail: Interactive Video Foraging Through Hierarchical Visualization." arXiv:2611.25377, Nov 19, 2026. <a href="https://arxiv.org/abs/2611.25377">https://arxiv.org/abs/2611.25377</a></li>
+  <li>Shubham Paliwal, Arushi Jain, Monika Sharma, Manasi Patwardhan. "Sketch2TikZ: Multi-Reward Reinforcement Learning for Converting Hand-Drawn Sketches to Executable TikZ." arXiv:2611.27620, Nov 20, 2026. <a href="https://arxiv.org/abs/2611.27620">https://arxiv.org/abs/2611.27620</a></li>
+  <li>Microsoft. "Microsoft Ignite 2026 Book of News." Nov 17–20, 2026. <a href="https://news.microsoft.com/events/ignite/2026/book-of-news/">https://news.microsoft.com/events/ignite/2026/book-of-news/</a></li>
+  <li>Microsoft Power BI team (republished by Decisive Systems, Rick W). "Power BI at Ignite: Building on the momentum." Nov 17, 2026. <a href="https://www.decisive.systems/Home/TabId/1370/ArtMID/3471/ArticleID/49307/Power-BI-at-Ignite-Building-on-the-momentum.aspx">https://www.decisive.systems/Home/TabId/1370/ArtMID/3471/ArticleID/49307/Power-BI-at-Ignite-Building-on-the-momentum.aspx</a></li>
+  <li>Salesforce Korea. "세일즈포스, AI와 대화하며 분석하는 '태블로 스튜디오' 정식 출시" (Tableau Studio launch). Nov 16, 2026. <a href="https://www.salesforce.com/kr/blog/tableau-studio-launch/">https://www.salesforce.com/kr/blog/tableau-studio-launch/</a></li>
+  <li>Tableau. "Release Notes: November 2026 (2026.3.1) — Tableau Studio general availability." Nov 2026. <a href="https://help.tableau.com/current/api/studio-dev-guide/en-us/release-notes.html">https://help.tableau.com/current/api/studio-dev-guide/en-us/release-notes.html</a></li>
+  <li>ThoughtSpot. "ThoughtSpot Deepens Integration with Claude to Advance Agentic Analytics for the Enterprise." Nov 18, 2026. <a href="https://www.thoughtspot.com/press-releases/thoughtspot-deepens-integration-with-claude-to-advance-agentic-analytics-for-the-enterprise">https://www.thoughtspot.com/press-releases/thoughtspot-deepens-integration-with-claude-to-advance-agentic-analytics-for-the-enterprise</a></li>
+  <li>Sigma (Siyuan Fan, Justine Yuan, Jisha Kambo). "Traceable answers are now in Sigma Assistant." Nov 22, 2026. <a href="https://www.sigmacomputing.com/blog/sigma-assistant-traceable-answers">https://www.sigmacomputing.com/blog/sigma-assistant-traceable-answers</a></li>
+  <li>Hex (Katherine Harrison). "Introducing the Knowledge Engine." Nov 19, 2026. <a href="https://hex.tech/blog/knowledge-engine/">https://hex.tech/blog/knowledge-engine/</a></li>
+  <li>Google Cloud (Ani Jain, Minhaz Kazi). "The visual evolution of Looker: Modern design for enterprise data storytelling." Nov 17, 2026. <a href="https://cloud.google.com/blog/products/business-intelligence/modern-data-visualizations-and-custom-charts-in-looker">https://cloud.google.com/blog/products/business-intelligence/modern-data-visualizations-and-custom-charts-in-looker</a></li>
+  <li>Databricks (Dipankar Kushari, Archana Shetty). "Bulk migrate your dashboards to AI/BI with Genie Code." Nov 19, 2026. <a href="https://www.databricks.com/blog/bulk-migrate-your-dashboards-aibi-genie-code">https://www.databricks.com/blog/bulk-migrate-your-dashboards-aibi-genie-code</a></li>
+  <li>Qlik. "Qlik Answers Puts Business Expertise to Work in AI-Assisted Decisions." Nov 17, 2026. <a href="https://www.qlik.com/us/news/company/press-room/press-releases/qlik-answers-puts-business-expertise-to-work-in-ai-assisted-decisions">https://www.qlik.com/us/news/company/press-room/press-releases/qlik-answers-puts-business-expertise-to-work-in-ai-assisted-decisions</a></li>
+  <li>Sigma (Marwan Mattar, Srivatsa P). "Introducing the Sigma Context Engine: Teaching AI how your business works." Nov 16, 2026. <a href="https://www.sigmacomputing.com/blog/sigma-context-engine">https://www.sigmacomputing.com/blog/sigma-context-engine</a></li>
+  <li>Deepnote (Jakub Jurovych). "Meet agentic apps: use and sync them in Codex, Claude, and everywhere else." Nov 19, 2026. <a href="https://deepnote.com/blog/apps">https://deepnote.com/blog/apps</a></li>
+  <li>tidyverse/ggplot2. "Release v4.0.4." GitHub, Nov 16, 2026. <a href="https://github.com/tidyverse/ggplot2/releases/tag/v4.0.4">https://github.com/tidyverse/ggplot2/releases/tag/v4.0.4</a></li>
+</ol>
+</article>
+    </main>
+
+    <footer>
+      <p>Data Visualization Tech Trends 2026. Sources for this week are in the references.</p>
+    </footer>
+  </div>
+</body>
+</html>
